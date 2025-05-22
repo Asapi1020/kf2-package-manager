@@ -1,0 +1,8 @@
+kfEditorPath: "./config/KFEditor.ini"
+modPackages:
+  path: "C:\\YourPath\\to\\ModPackages"
+  output: "C:\\YourPath\\to\\Output"
+  packages:
+    - YourMod1
+    - YourMod2
+    - YourMod3
