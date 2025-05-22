@@ -1,4 +1,6 @@
-kfEditorPath: "./config/KFEditor.ini"
+kfEditor:
+  configPath: "./sample/KFEditor.ini"
+  binPath: ""
 modPackages:
   path: "C:\\YourPath\\to\\ModPackages"
   output: "C:\\YourPath\\to\\Output"

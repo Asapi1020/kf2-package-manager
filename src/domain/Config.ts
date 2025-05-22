@@ -1,8 +1,8 @@
 import config from "config";
 
 export class Config {
-	get kfEditorPath(): string {
-		return config.get("kfEditorPath");
+	get kfEditor(): KFEditorConfig {
+		return config.get("kfEditor");
 	}
 
 	get modPackages(): ModPackagesConfig {
@@ -14,4 +14,9 @@ export interface ModPackagesConfig {
 	path: string;
 	output: string;
 	packages: string[];
+}
+
+export interface KFEditorConfig {
+	configPath: string;
+	binPath: string;
 }

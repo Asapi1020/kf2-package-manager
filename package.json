@@ -4,10 +4,10 @@
   "description": "",
   "author": "Asapi1020",
   "license": "GPL-3.0-only",
-  "main": "src/index.ts",
+  "main": "src/bin/kfpm.ts",
   "type": "module",
   "bin": {
-    "kfpm": "src/bin/kfpm.ts"
+    "kfpm": "dist/bin/kfpm.js"
   },
   "repository": {
     "type": "git",
@@ -23,8 +23,7 @@
   "dependencies": {
     "@asp1020/type-utils": "^1.0.4",
     "commander": "^14.0.0",
-    "config": "^4.0.0",
-    "ini": "^5.0.0"
+    "config": "^4.0.0"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
