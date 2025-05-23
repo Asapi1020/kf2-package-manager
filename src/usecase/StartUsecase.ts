@@ -10,7 +10,7 @@ export class StartUsecase {
 
 	public start(): void {
 		const cmd = this.setupLaunchCommand();
-		this.context.driver.logger.info("Launching game with command: ", cmd);
+		this.context.driver.logger.info(`Launching game with command: ${cmd}`);
 		try {
 			this.context.infra.processRepository.executeCommand(cmd);
 		} catch {
