@@ -1,18 +1,13 @@
 #!/usr/bin/env node
-import { Command } from "commander";
-import { Config } from "../domain/Config";
-import { compile } from "../usecase/compile";
+import { Store as Domain } from "../domain/Store";
+import { Store as Driver } from "../driver/Store";
+import { Program } from "../framework/Program";
+import { Infra } from "../infra/Infra";
+import { Usecase } from "../usecase/Usecase";
 
-const config = new Config();
-const program = new Command();
-
-program.name("kfpm").description("Killing Floor 2 Mods Package Manager");
-
-program
-	.command("compile")
-	.description("Compile mods")
-	.action(() => {
-		compile(config);
-	});
-
+const domain = new Domain();
+const driver = new Driver();
+const infra = new Infra({ domain, driver });
+const usecase = new Usecase({ domain, driver, infra });
+const program = new Program({ domain, driver, infra, usecase });
 program.parse(process.argv);
