@@ -36,7 +36,12 @@ export class ProcessRepository {
 	}
 
 	public terminateProcess(name: string): void {
-		this.processor.terminate(this.processes.get(name));
+		const process = this.processes.get(name);
+		if (!process) {
+			this.logger.error(`[${name}] No such process to terminate.`);
+			return;
+		}
+		this.processor.terminate(process);
 		this.logger.info(`[${name}] Process terminated.`);
 	}
 }
