@@ -1,4 +1,3 @@
-import { existsSync } from "node:fs";
 import { isArray, isString } from "@asp1020/type-utils";
 import type { Ini } from "../domain/Ini";
 import type { Context } from "./Context";
@@ -13,11 +12,13 @@ export class FileRepository {
 		return this.context.driver;
 	}
 
+	public readText(path: string): string {
+		const content = this.driver.fileDriver.read(path, "utf8");
+		return content;
+	}
+
 	public readIni(path: string): Ini {
-		if (!existsSync(path)) {
-			return {};
-		}
-		const content = this.driver.fileDriver.readFile(path, "utf8");
+		const content = this.driver.fileDriver.read(path, "utf8");
 		const lines = content.split(/\r?\n/);
 		const ini: Ini = {};
 		let currentSection = "";
@@ -56,7 +57,16 @@ export class FileRepository {
 			return [sectionLine, ...valuesLines].join("\n");
 		});
 		const iniFile = sections.join("\n\n");
-		this.driver.fileDriver.writeFile(path, iniFile, "utf8");
+		this.driver.fileDriver.write(path, iniFile, "utf8");
+	}
+
+	public watchChange(path: string, onChange: () => void): void {
+		this.driver.fileDriver.watch(path, (eventType, filename) => {
+			if (eventType === "change" && filename) {
+				this.driver.logger.info(`File changed: ${filename}`);
+				onChange();
+			}
+		});
 	}
 
 	private isSectionLine(line: string): string | null {

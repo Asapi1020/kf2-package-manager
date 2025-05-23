@@ -19,4 +19,5 @@ export interface ModPackagesConfig {
 export interface KFEditorConfig {
 	configPath: string;
 	binPath: string;
+	logPath: string;
 }

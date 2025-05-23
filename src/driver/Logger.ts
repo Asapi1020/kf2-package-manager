@@ -6,7 +6,7 @@ export class Logger {
 	constructor() {
 		this.logger = winston.createLogger({
 			level: "info",
-			format: winston.format.simple(),
+			format: winston.format.combine(winston.format.colorize(), winston.format.simple()),
 			transports: [new winston.transports.Console()],
 		});
 	}
