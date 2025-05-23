@@ -8,6 +8,10 @@ export class Config {
 	get modPackages(): ModPackagesConfig {
 		return config.get("modPackages");
 	}
+
+	get launchOptions(): LaunchConfig {
+		return config.get("launchOptions");
+	}
 }
 
 export interface ModPackagesConfig {
@@ -20,4 +24,15 @@ export interface KFEditorConfig {
 	configPath: string;
 	binPath: string;
 	logPath: string;
+}
+
+export interface LaunchConfig {
+	gamePath: string;
+	languageForCooking: string;
+	mapName: string;
+	gameMode: string;
+	mutators: string[];
+	difficulty: number;
+	gameLength: number;
+	otherOptions: string[];
 }

@@ -12,6 +12,12 @@ export class Program {
 			.action(() => {
 				context.usecase.compileUsecase.compile();
 			});
+		this.program
+			.command("start")
+			.description("Start a game")
+			.action(() => {
+				context.usecase.startUsecase.start();
+			});
 	}
 	public parse(argv: string[]): void {
 		this.program.parse(argv);
