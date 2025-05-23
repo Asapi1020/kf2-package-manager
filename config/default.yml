@@ -9,3 +9,13 @@ modPackages:
     - YourMod1
     - YourMod2
     - YourMod3
+launchOptions:
+  gamePath: "C:/YourPath/to/Game"
+  languageForCooking: "int"
+  mapName: "KF-SubSynth"
+  gameMode: "CombinedCD2.CD_Survival"
+  mutators:
+    - "FriendlyHUD.FriendlyHUDMutator"
+  difficulty: 3
+  gameLength: 2
+  otherOptions:

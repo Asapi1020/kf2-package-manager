@@ -44,4 +44,8 @@ export class ProcessRepository {
 		this.processor.terminate(process);
 		this.logger.info(`[${name}] Process terminated.`);
 	}
+
+	public executeCommand(cmd: string): Buffer {
+		return this.processor.run(cmd);
+	}
 }
